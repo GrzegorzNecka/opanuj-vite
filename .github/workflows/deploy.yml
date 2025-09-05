@@ -1,4 +1,4 @@
-# .github/workflows/netlify.yml
+# <project_root>/.github/workflows/deploy.yml
 name: Build and Deploy to Netlify
 
 on:
@@ -9,8 +9,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Configure node
-        # Użycie tej akcji pozwala ustawić odpowiednią wersję Node.js na runnerze GitHub Actions, zgodnie z plikiem .nvmrc. To kluczowe dla spójności środowiska builda i uniknięcia problemów z zależnościami.
         uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
